@@ -1,0 +1,328 @@
+/* SECCIÓN DE CURSOS - VERSIÓN PREMIUM EJECUTIVA */
+.courses {
+    width: 100%;
+    padding: 6rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #f0f3f5 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* EFECTO DE FONDO ELEGANTE */
+.courses::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="%23e0e6e9" stroke-width="0.5"><path d="M0 0 L100 100 M100 0 L0 100"/></svg>');
+    opacity: 0.15;
+    z-index: 0;
+}
+
+/* TÍTULO DE LUJO */
+.courses .title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.courses .title h2 {
+    font-size: 2.8rem;
+    color: #1a2e35;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding-bottom: 1rem;
+}
+
+.courses .title h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #224339 0%, #3a7d6d 100%);
+    border-radius: 2px;
+}
+
+/* LISTA DE CURSOS - DISEÑO EJECUTIVO */
+.courses ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    z-index: 1;
+}
+
+/* TARJETAS DE CURSO PREMIUM */
+.courses ul li {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none;
+    position: relative;
+}
+
+.courses ul li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.courses ul li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.courses ul li:hover::before {
+    opacity: 1;
+}
+
+/* ESTRUCTURA DE LA TARJETA EJECUTIVA */
+.courses .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* IMAGEN DEL CURSO CON EFECTO DE LUJO */
+.courses .card .imageCourse {
+    height: 260px;
+    width: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.courses .card .imageCourse::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(transparent 0%, rgba(0,0,0,0.5) 100%);
+}
+
+/* Badge institucional premium */
+.institution-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #224339;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 2;
+}
+
+/* CONTENIDO DE LA TARJETA EJECUTIVA */
+.courses .card .data {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 260px);
+    background: white;
+}
+
+.courses .card .text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.courses .card .text h3 {
+    font-size: 1.6rem;
+    color: #1a2e35;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.courses .card .text h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: #3a7d6d;
+}
+
+.courses .card .text p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+/* BOTÓN DE LUJO */
+.courses .card .btnInfo {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.courses .card .btnInfo button {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #224339 0%, #3a7d6d 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 80%;
+    max-width: 220px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 4px 15px rgba(34, 67, 57, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.courses .card .btnInfo button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.courses .card .btnInfo button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(34, 67, 57, 0.4);
+}
+
+.courses .card .btnInfo button:hover::before {
+    left: 100%;
+}
+
+/* IMÁGENES ESPECÍFICAS CON EFECTO HOVER */
+.unamCourse, .ipnCourse, .uamCourse {
+    transition: transform 0.5s ease;
+}
+
+.courses ul li:hover .imageCourse {
+    transform: scale(1.05);
+}
+
+.unamCourse {
+    background-image: url('../images/curso/unam_curso.jpg');
+}
+
+.ipnCourse {
+    background-image: url('../images/curso/ipn_curso.jpg');
+}
+
+.uamCourse {
+    background-image: url('../images/curso/uam_curso.jpg');
+}
+
+/* RESPONSIVE DESIGN EJECUTIVO */
+@media (min-width: 768px) {
+    .courses ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .courses .title h2 {
+        font-size: 3.2rem;
+    }
+    
+    .courses {
+        padding: 8rem 0;
+    }
+    
+    .courses .card .text h3 {
+        font-size: 1.8rem;
+    }
+    
+    .courses .card .text p {
+        font-size: 1.05rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .courses ul {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+    
+    .courses .title h2 {
+        font-size: 3.5rem;
+    }
+    
+    .courses .card .imageCourse {
+        height: 280px;
+    }
+    
+    .courses .card .data {
+        padding: 2.5rem;
+    }
+}
+
+/* ANIMACIÓN DE HOVER PARA TARJETAS */
+@keyframes cardHover {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+.courses ul li:hover {
+    animation: cardHover 0.4s ease-out forwards;
+}

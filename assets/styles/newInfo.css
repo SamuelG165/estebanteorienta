@@ -1,0 +1,78 @@
+/* SECCIÓN DE NUEVA INFORMACIÓN */
+.infoImages{
+    height: 60vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* GENERAL */
+.lastCourse .text, .visitsMade .text{
+    height: 5vh;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.438);
+    color: white;
+}
+
+.infoImages .lastCourse, .infoImages .visitsMade{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100vw;
+}
+
+.infoImages a{
+    text-decoration: none;
+    color: white;
+}
+
+/* ULTIMO CURSO */
+.infoImages .lastCourse{
+    background-image: url('../images/carrusel/ceneval\ carrusel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 20% center;
+    align-items: baseline;
+}
+
+/* VISITAS REALIZADAS */
+.infoImages .visitsMade{
+    background-image: url('../images/esteban/visitas.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+@media(min-width: 768px){
+    /* SECCIÓN DE NUEVA INFORMACIÓN */
+    .infoImages{
+        height: 80vh;
+    }
+    
+    /* GENERAL */
+    .infoImages .lastCourse, .infoImages .visitsMade{
+        justify-content: end;
+        align-items: start;
+    }
+
+    /* TEXTO */
+    .lastCourse .text, .visitsMade .text{
+        height: 6vh;
+        width: 40vw;
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lastCourse .text, .visitsMade .text{
+        /* height: 5vh; */
+        width: 30vw;
+    }
+}

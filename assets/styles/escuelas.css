@@ -1,0 +1,126 @@
+/* SECCIÓN DE LAS ESCUELAS */
+.schoolCards{
+    height: auto;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 15px 0;
+    background-color: rgb(240, 248, 255);
+}
+
+/* TITULO */
+.schoolCards .title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.schoolCards .title h2{
+    width: 90%;
+}
+
+/* CARTAS */
+.schoolCards .cards{
+    height: auto;
+    width: 100vw;
+}
+
+.cards ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.cards li{
+    list-style: none;
+    height: auto;
+    width: auto;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), -2px -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* UNAM */
+.cards ul li .unamCard{
+    height: 50vh;
+    width: 70vw;
+    background-image: url('../images/escudos/unam\ escudo.jpg');
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+/* IPN */
+.cards ul li .ipnCard{
+    height: 50vh;
+    width: 70vw;
+    background-image: url('../images/escudos/ipn\ escudo.jpg');
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+/* UAM */
+.cards ul li .uamCard{
+    height: 50vh;
+    width: 70vw;
+    background-image: url('../images/escudos/uam\ escudo.png');
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+
+@media(min-width: 453px){
+
+    .cards ul li .unamCard, .cards ul li .ipnCard, .cards ul li .uamCard{
+        width: 45vw;
+    }
+}
+
+/* MEDIDAS PARA TABLET */
+@media(min-width: 768px){
+    .schoolCards .cards ul{
+        display: flex;
+        flex-direction: row;
+        /* background-color: aqua; */
+    }
+
+    .schoolCards .cards .unamCard,   .schoolCards .cards .ipnCard, .schoolCards .cards .uamCard {
+        height: 50vh;
+        width: 29vw;
+    }
+}
+
+/* MEDIDAS PARA LAPTOP EN ADELANTE */
+@media(min-width: 1024px){
+    .schoolCards .cards ul{
+        gap: 2em;
+    }
+
+    .schoolCards .cards .unamCard, .schoolCards .cards .ipnCard, .schoolCards .cards .uamCard {
+        height: 50vh;
+        width: 22vw;
+    }
+
+    .schoolCards .cards .unamCard:hover, .schoolCards .cards .ipnCard:hover, .schoolCards .cards .uamCard:hover{
+        scale: 0.98;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .schoolCards .cards .unamCard:hover{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.150), rgba(0, 0, 0, 0.150)), url('../images/escudos/unam\ escudo.jpg');
+    }
+
+    .schoolCards .cards .ipnCard:hover{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.150), rgba(0, 0, 0, 0.150)), url('../images/escudos/ipn\ escudo.jpg');
+    }
+
+    .schoolCards .cards .uamCard:hover{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.150), rgba(0, 0, 0, 0.150)), url('../images/escudos/uam\ escudo.png');
+    }
+}

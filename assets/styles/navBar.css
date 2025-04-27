@@ -1,0 +1,238 @@
+/* BARRA EJECUTIVA PREMIUM */
+.executive-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO EJECUTIVO */
+.nav-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #122620;
+    letter-spacing: 1px;
+    font-family: 'Playfair Display', serif;
+}
+
+.logo-subtext {
+    font-size: 0.65rem;
+    color: #17713D;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* MENÚ HAMBURGUESA PREMIUM */
+.menu-icon {
+    display: none;
+    width: 30px;
+    height: 22px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-bar {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #122620;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.top-bar {
+    top: 0;
+    transform-origin: top left;
+}
+
+.middle-bar {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bottom-bar {
+    bottom: 0;
+    transform-origin: bottom left;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+/* ENLACES EJECUTIVOS */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.link-text {
+    position: relative;
+    z-index: 1;
+}
+
+.link-underline {
+    height: 1px;
+    width: 0;
+    background: #17713D;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: 2px;
+}
+
+.nav-link:hover {
+    color: #17713D;
+}
+
+.nav-link:hover .link-underline {
+    width: 100%;
+}
+
+/* BOTÓN CTA EJECUTIVO */
+.nav-cta {
+    background: #17713D;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(23, 113, 61, 0.2);
+}
+
+.cta-icon {
+    font-size: 0.8rem;
+}
+
+.nav-cta:hover {
+    background: #135732;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(23, 113, 61, 0.3);
+}
+
+/* EFECTO SCROLL */
+.executive-nav.scrolled {
+    height: 70px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* MENÚ MÓVIL */
+@media (max-width: 1024px) {
+    .menu-icon {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 2rem;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        gap: 1.5rem;
+    }
+    
+    .nav-item {
+        width: 100%;
+    }
+    
+    .nav-link {
+        padding: 0.8rem 0;
+        font-size: 1rem;
+    }
+    
+    .cta-item {
+        margin-top: 1rem;
+    }
+    
+    #menu-toggle:checked ~ .nav-links {
+        right: 0;
+    }
+    
+    #menu-toggle:checked ~ .menu-icon .top-bar {
+        transform: rotate(45deg) translate(4px, -1px);
+        width: 110%;
+    }
+    
+    #menu-toggle:checked ~ .menu-icon .middle-bar {
+        opacity: 0;
+    }
+    
+    #menu-toggle:checked ~ .menu-icon .bottom-bar {
+        transform: rotate(-45deg) translate(4px, 1px);
+        width: 110%;
+    }
+}
+
+/* ANIMACIÓN DE CARGA */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-item {
+    animation: fadeInDown 0.6s ease forwards;
+    opacity: 0;
+}
+
+.nav-item:nth-child(1) { animation-delay: 0.1s; }
+.nav-item:nth-child(2) { animation-delay: 0.2s; }
+.nav-item:nth-child(3) { animation-delay: 0.3s; }
+.nav-item:nth-child(4) { animation-delay: 0.4s; }

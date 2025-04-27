@@ -1,0 +1,177 @@
+/* SECCIÓN ACERCA DE ESTEBAN TE ORIENTA - CORRECCIÓN */
+.aboutMe {
+    width: 100%;
+    padding: 5rem 1rem;
+    background-color: #f8f9fa;
+    position: relative;
+}
+
+.aboutMe .title h2 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    font-weight: 600;
+}
+
+.aboutMe .title h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #17713D;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.estebanImage {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.estebanImage img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.estebanImage:hover img {
+    transform: scale(1.02);
+}
+
+.data {
+    padding: 0 1rem;
+}
+
+.subtitle h3 {
+    font-size: 1.5rem;
+    color: #224339;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    text-align: center;
+    font-weight: 600;
+}
+
+.paragraph p {
+    color: #ffffff;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.paragraph2 p {
+    color: #6d6c6c;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.icon a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: #17713D;
+    color: white;
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+}
+
+.icon a:hover {
+    background: #1e8a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Cambiado a sombra neutral */
+}
+
+/* ESTILOS PARA FONT AWESOME */
+.icon .fab,
+.icon .fas {
+    font-size: 1.2rem;
+}
+
+.socialMedia {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.socialMedia ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.socialMedia li {
+    transition: transform 0.3s ease;
+}
+
+.socialMedia li:hover {
+    transform: translateY(-3px);
+}
+
+.socialMedia a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f1f1f1;
+    color: #555; /* Color de icono neutral */
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.socialMedia a:hover {
+    background: #f1f1f1; /* Fondo permanece igual */
+    color: #17713D; /* Solo cambia el color del icono */
+}
+
+/* RESPONSIVE DESIGN */
+@media (min-width: 768px) {
+    .information {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .estebanImage {
+        flex: 1;
+    }
+    
+    .data {
+        flex: 1;
+        padding: 0 2rem;
+    }
+    
+    .subtitle h3, .paragraph p {
+        text-align: left;
+    }
+    
+    .icon {
+        display: flex;
+        justify-content: flex-start;
+    }
+}
