@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -967,6 +968,223 @@
             </div>
         </div>
     </section>
+
+    <!-- Sección de Galería Elegante -->
+<section class="gallery-section">
+    <div class="gallery-container">
+      <h2 class="visually-hidden">Galería de imágenes</h2>
+      <div class="gallery-track">
+        <div class="gallery-slide">
+          <img src="./Imagenes/nuevo1.png" alt="Contenido del youtuber" loading="lazy">
+        </div>
+        <div class="gallery-slide">
+          <img src="./Imagenes/nuevo2.png" alt="Contenido del youtuber" loading="lazy">
+        </div>
+        <div class="gallery-slide">
+          <img src="./Imagenes/nuevo3.png" alt="Contenido del youtuber" loading="lazy">
+        </div>
+        <div class="gallery-slide">
+          <img src="./Imagenes/nuevo4.png" alt="Contenido del youtuber" loading="lazy">
+        </div>
+        <div class="gallery-slide">
+          <img src="./Imagenes/nuevo5.png" alt="Contenido del youtuber" loading="lazy">
+        </div>
+        <div class="gallery-slide">
+          <img src="./Imagenes/nuevo6.png" alt="Contenido del youtuber" loading="lazy">
+        </div>
+        <div class="gallery-slide">
+          <img src="./Imagenes/nuevo7.png" alt="Contenido del youtuber" loading="lazy">
+        </div>
+        <div class="gallery-slide">
+          <img src="./Imagenes/nuevo9.png" alt="Contenido del youtuber" loading="lazy">
+        </div>
+        <div class="gallery-slide">
+          <img src="./Imagenes/nuevo10.png" alt="Contenido del youtuber" loading="lazy">
+        </div>
+        <div class="gallery-slide">
+          <img src="./Imagenes/nuevo11.png" alt="Contenido del youtuber" loading="lazy">
+        </div>
+      </div>
+      <div class="gallery-scrollbar">
+        <div class="gallery-scrollbar-thumb"></div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    /* Estilos para la galería elegante */
+    .gallery-section {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+    }
+    
+    .gallery-track {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1.5rem;
+      scrollbar-width: none; /* Firefox */
+    }
+    
+    .gallery-track::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+    
+    .gallery-slide {
+      scroll-snap-align: start;
+      flex: 0 0 300px;
+      height: 200px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    
+    .gallery-slide:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-slide:hover img {
+      transform: scale(1.03);
+    }
+    
+    .gallery-scrollbar {
+      height: 4px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 2px;
+      margin-top: 1.5rem;
+      position: relative;
+      width: 100%;
+    }
+    
+    .gallery-scrollbar-thumb {
+      height: 100%;
+      width: 30%;
+      background: linear-gradient(90deg, #6c757d 0%, #495057 100%);
+      border-radius: 2px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      cursor: grab;
+    }
+    
+    .gallery-scrollbar-thumb:active {
+      cursor: grabbing;
+    }
+    
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .gallery-slide {
+        flex: 0 0 250px;
+        height: 180px;
+      }
+      
+      .gallery-container {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const track = document.querySelector('.gallery-track');
+      const thumb = document.querySelector('.gallery-scrollbar-thumb');
+      const scrollbar = document.querySelector('.gallery-scrollbar');
+      
+      // Actualizar posición del thumb al desplazar
+      track.addEventListener('scroll', function() {
+        const scrollPercentage = track.scrollLeft / (track.scrollWidth - track.clientWidth);
+        const thumbPosition = scrollPercentage * (scrollbar.clientWidth - thumb.clientWidth);
+        thumb.style.left = `${thumbPosition}px`;
+      });
+      
+      // Hacer el thumb arrastrable
+      let isDragging = false;
+      
+      thumb.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        thumb.style.cursor = 'grabbing';
+        e.preventDefault();
+      });
+      
+      document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        
+        const scrollbarRect = scrollbar.getBoundingClientRect();
+        let thumbPosition = e.clientX - scrollbarRect.left - (thumb.clientWidth / 2);
+        
+        // Limitar la posición del thumb dentro de la scrollbar
+        thumbPosition = Math.max(0, Math.min(thumbPosition, scrollbar.clientWidth - thumb.clientWidth));
+        
+        thumb.style.left = `${thumbPosition}px`;
+        
+        // Calcular el desplazamiento correspondiente del track
+        const scrollPercentage = thumbPosition / (scrollbar.clientWidth - thumb.clientWidth);
+        track.scrollLeft = scrollPercentage * (track.scrollWidth - track.clientWidth);
+      });
+      
+      document.addEventListener('mouseup', function() {
+        isDragging = false;
+        thumb.style.cursor = 'grab';
+      });
+      
+      // También hacer funcionar en pantallas táctiles
+      thumb.addEventListener('touchstart', function(e) {
+        isDragging = true;
+        e.preventDefault();
+      });
+      
+      document.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        
+        const touch = e.touches[0];
+        const scrollbarRect = scrollbar.getBoundingClientRect();
+        let thumbPosition = touch.clientX - scrollbarRect.left - (thumb.clientWidth / 2);
+        
+        thumbPosition = Math.max(0, Math.min(thumbPosition, scrollbar.clientWidth - thumb.clientWidth));
+        thumb.style.left = `${thumbPosition}px`;
+        
+        const scrollPercentage = thumbPosition / (scrollbar.clientWidth - thumb.clientWidth);
+        track.scrollLeft = scrollPercentage * (track.scrollWidth - track.clientWidth);
+      });
+      
+      document.addEventListener('touchend', function() {
+        isDragging = false;
+      });
+    });
+  </script>
 
     <!-- SLIDER PREMIUM -->
     <section class="slider-section" id="visitas">
