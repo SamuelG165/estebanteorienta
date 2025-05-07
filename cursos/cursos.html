@@ -1,174 +1,659 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos</title>
-
-    <!-- POSICIONAMIENTO CEO -->
-    <meta name="keywords" content="EstebanTeOrienta, estebanteorienta, cursos, nivel superior, nivel media superior, ingreso a la preparatoria, ceneval, Ceneval, unam, uam, ipn, UNAM, UAM, IPN">
-    <link rel="canonical" href="">
-    <meta itemprop="name" content="EstebanTeOrienta">
-
-    <!-- Meta para Open Graph -->
-     <meta property="og:locale" content="es_Es">
-     <meta property="og:type" content="website">
-     <meta property="og:title" content="EstebanTeOrienta">
-     <meta property="og:description" content="Los cursos de EstebanTeOrienta son tu mejor opcion para poder ingresar a las mejores universidades y preparatorias de mexico">
-     <meta property="og:url" content="">
-     <meta property="og:site_name" content="EstebanTeOrienta">
-
-    <!-- CODIGO CSS -->
-     <link rel="stylesheet" type="text/css" href="cursos.css">
-
-    <!-- ESTILOS DE LETRA -->
-     
+    <title>Esteban Te Orienta - Cursos de Preparación Universitaria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .features {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .about {
+            padding: 5rem 0;
+            background-color: #f1f5f9;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .university-logos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .university-logo {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .university-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .university-logo img {
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        
+        .university-logo:hover img {
+            filter: grayscale(0%);
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 99;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column p, .footer-column a {
+            margin-bottom: 1rem;
+            display: block;
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: left 0.3s;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .university-logos {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- ESTRUCTURA DEL LA CABEZA DE LA PAGINA -->
     <header>
-
-        <!-- BARRA -->
-        <div class="navBar">
-            <div class="logo">
-                <h3>ESTEBAN TE ORIENTA</h3>
-            </div>
-
-            <div class="menu">
-
-                <label class="hamburguerBar" for="hamburguer-menu">
-                    <img src="img/menu.png" alt="">
-                </label>
-
-                <input type="checkbox" id="hamburguer-menu">
-                
-                <ul class="options">
-                    <li><a href="../index.html">INICIO</a></li>
-                    <li><a href="../cursos/cursos.html">CURSOS</a></li>
-                    <li><a href="../contenido/index.html">CONTENIDO</a></li>
-                </ul>
-            </div>
-        </div> 
-
+        <div class="container header-container">
+            <a href="#" class="logo">Esteban <span>Te Orienta</span></a>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html">Inicio</a>
+                <a href="#cursos">Cursos</a>
+                <a href="../contenido/index.html">Contenido</a>
+            </nav>
+        </div>
     </header>
-    
-    <!-- FIN DE LA ESTRUCTURA DE LA CABEZA DE LA PAGINA -->
 
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Logra ingresar a las escuelas más prestigiosas de México</h1>
+            <p>Si estás decidido a ingresar a las escuelas más prestigiosas de México con mis cursos para: UNAM, POLITÉCNICO Y UAM podrás ingresar en tu primera vuelta.</p>
+            <a href="#inscripciones" class="btn">Inscríbete ahora</a>
+            <a href="#cursos" class="btn btn-secondary">Conoce más</a>
+        </div>
+    </section>
 
-    <!-- INICIO DEL CUERPO DE LA PAGINA -->
-
-    <main class="reveal">
-        <h1>Logra ingresar a las escuelas mas prestigiosas y reconocidas de mexico.</h1>
-
-        <!-- SECCION DE LOS CURSOS DE LA PAGINA -->
-        <section class="cursos">
-            <div class="info">
-                <h3>Inscribete ahora</h3>
-                <p>Si estas deicidido a ingresar a las escuelas mas prestigiosas de mexico con mis cursos para: <span>UNAM, POLITECNICO Y UAM</span> podras ingresar en tu primera vuelta.</p>
-                <div class="img__alum">
-                    <img src="img/EstuCurs.jpg" alt="alum__png">
-                </div>
+    <section class="features" id="contenido">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ventajas Prácticas y de Apoyo al Estudiante</h2>
             </div>
-            <div class="ventajas">
-                <h3>Ventajas Prácticas Y De Apoyo Al Estudiante:</h3>
-                <ul class="list__vent">
-                    <li class="item__vent">Horario flexible de aprendizaje.</li>
-                    <li class="item__vent">Aprende el doble de rapido.</li>
-                    <li class="item__vent">Ingreso asegurado a cualquier escuela.</li>
-                    <li class="item__vent">Base academica solida.</li>
-                    <li class="item__vent">Profesores calificados y con experiencia</li>
-                    <li class="item__vent">Planes de estudio actualizados.</li>
-                    <li class="item__vent">Uso de tecnología y recursos educativos innovadores.</li>
-                </ul>
-            </div>
-        </section>
-
-        <div class="whatsapp-container">
-            <a href="https://api.whatsapp.com/send/?phone=5513025346&text=%C2%A1Hola+Esteban%21+Me+gustar%C3%ADa+cotizar.&type=phone_number&app_absent=0" 
-               class="whatsapp-button" 
-               target="_blank" 
-               rel="noopener noreferrer">
-               
-               <div class="whatsapp-content">
-                 <div class="whatsapp-icon-wrapper">
-                   <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                   </svg>
-                 </div>
-                 <span class="whatsapp-text">Inscripciones</span>
-               </div>
-               
-               <div class="whatsapp-hover-effect"></div>
-            </a>
-          </div>
-
-        <!-- SECCION DE INFORMACION DE LOS CURSOS -->
-        <section class="info__cursos">
-            <h2>SOBRE LOS CURSOS</h2>
-            <p>¿Sueñas con ingresar a las mejores universidades de México? yo, Esteban, te brindo una sólida base académica en todas las materias clave, preparándote a fondo para los exámenes de admisión de la <span>UNAM, IPN, UAM y otras instituciones de prestigio,Tambien para que apruebes el EXAMEN DE CENEVAL.</span></p>
-
-            <p>Soy altamente calificado y con amplia experiencia conoce a fondo los planes de estudio y las estrategias de examen más efectivas. A través de simulacros constantes y materiales de estudio.</p>
-
-            <p>No solo memorizamos contenidos, ¡desarrollo tu pensamiento crítico y habilidades de resolución de problemas, fundamentales para el éxito en la preparatoria y en tu vida profesional! Además, te ofrecemos orientación vocacional personalizada para ayudarte a descubrir tu camino</p>
-        </section>
-
-        <!-- SECCION DE LOS ESCUDOS DE LAS ESCUELAS -->
-        <section class="cont__escuelas">
-            <div class="escuela__item"><img src="img/unam__logo.png" alt="img__logunam" class="reveal"></div>
-            <div class="escuela__item"><img src="img/logotipo_ipn.webp" alt="img__logipn" class="reveal"></div>
-            <div class="escuela__item"><img src="img/logo__ceneval.png" alt="img__logcen" class="reveal"></div>
-            <div class="escuela__item"><img src="img/logo__Uam.png" alt="img__loguam" class="reveal"></div>
-        </section>
-
-    </main>
-
-    <!-- FIN DEL CUERPO DE LA PAGINA -->
-
-
-    <!-- COTENIDO EXTRA (ESLOGAN DE LA PAGINA) -->
-
-    <aside class="contx__eslogan">
-        <p class="reveal">El camino al éxito comienza con el primer paso, ¡y tú ya estás aquí!</p>
-    </aside>
-
-    <!-- FIN DEL COTENIDO EXTRA (ESLOGAN DE LA PAGINA) -->
-
-
-    <script src="cursos-anim.js"></script> <!-- SCRIPT PARA LA ANIMACION -->
-    
-
-    <!-- INICIO DEL PIE DE PAGINA -->
-
-    <footer class="premium-footer">
-        <div class="footer-content">
-            <div class="brand-presentation">
-                <div class="brand-logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                    </svg>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Horario flexible de aprendizaje</h3>
+                    <p>Adaptamos los horarios a tus necesidades para que puedas combinar tus estudios con otras actividades.</p>
                 </div>
-                <div class="brand-info">
-                    <h3 class="brand-title">Esteban Te Orienta</h3>
-                    <p class="brand-description">Especialista en preparación para ingresar a las instituciones educativas más prestigiosas de México.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Aprende el doble de rápido</h3>
+                    <p>Métodos de enseñanza efectivos que aceleran tu aprendizaje sin sacrificar la calidad.</p>
                 </div>
-            </div>
-            
-            <div class="footer-cta">
-                <p class="cta-text">¿Listo para comenzar tu camino al éxito?</p>
-                <a href="https://api.whatsapp.com/send/?phone=5513025346&text=%C2%A1Hola+Esteban%21+Me+gustar%C3%ADa+cotizar.&type=phone_number&app_absent=0" 
-                   class="cta-button" 
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                   Contáctame ahora
-                </a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Ingreso asegurado a cualquier escuela</h3>
+                    <p>Nuestros alumnos tienen un alto porcentaje de aceptación en las universidades más demandadas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Base académica sólida</h3>
+                    <p>No solo te preparamos para el examen, te damos las bases para destacar en tu carrera universitaria.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Expertiz calificada y con experiencia</h3>
+                    <p>Cuento con una amplia trayectoria en preparación para exámenes de admisión.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Planes de estudio actualizados</h3>
+                    <p>Contenido alineado con los últimos cambios en los exámenes de admisión.</p>
+                </div>
             </div>
         </div>
-        
-        <div class="copyright">
-            <p>&copy; 2023 Esteban Te Orienta. Todos los derechos reservados.</p>
+    </section>
+
+    <section class="about" id="cursos">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>SOBRE LOS CURSOS</h2>
+                    <p>¿Sueñas con ingresar a las mejores universidades de México? Yo, Esteban, te brindo una sólida base académica en todas las materias clave, preparándote a fondo para los exámenes de admisión de la UNAM, IPN, UAM y otras instituciones de prestigio, también para que apruebes el EXAMEN DE CENEVAL.</p>
+                    <p>Soy altamente calificado y con amplia experiencia, conozco a fondo los planes de estudio y las estrategias de examen más efectivas. A través de simulacros constantes y materiales de estudio actualizados, garantizamos tu preparación óptima.</p>
+                    <p>No solo memorizamos contenidos, ¡desarrollo tu pensamiento crítico y habilidades de resolución de problemas, fundamentales para el éxito en la preparatoria y en tu vida profesional! Además, te ofrecemos orientación vocacional personalizada para ayudarte a descubrir tu camino.</p>
+                    
+                    <div class="university-logos">
+                        <div class="university-logo">
+                            <img src="./img/unam__logo.png" alt="UNAM">
+                        </div>
+                        <div class="university-logo">
+                            <img src="./img/logotipo_ipn.webp" alt="IPN">
+                        </div>
+                        <div class="university-logo">
+                            <img src="./img/logo__Uam.png" alt="UAM">
+                        </div>
+                        <div class="university-logo">
+                            <img src="./img/logo__ceneval.png" alt="CENEVAL">
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Estudiante universitario">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="inscripciones">
+        <div class="container">
+            <h2>El camino al éxito comienza con el primer paso, ¡y tú ya estás aquí!</h2>
+            <p>Esteban Te Orienta - Especialista en preparación para ingresar a las instituciones educativas más prestigiosas de México.</p>
+            <a href="https://api.whatsapp.com/send/?phone=5513025346&text=%C2%A1Hola+Esteban%21+Me+gustar%C3%ADa+cotizar.&type=phone_number&app_absent=0" class="btn">¿Listo para comenzar tu camino al éxito?</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Esteban Te Orienta</h3>
+                    <p>Especialista en preparación para exámenes de admisión a las universidades más prestigiosas de México.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/estebanteorienta/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/c/EstebanTeOrienta"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@estebanteorienta?lang=es"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://x.com/estebantorienta"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/estebanteorienta/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces rápidos</h3>
+                    <a href="../index.html">Inicio</a>
+                    <a href="#cursos">Cursos</a>
+                    <a href="../contenido/index.html">Contenido</a>
+                    <a href="#inscripciones">Inscripciones</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone-alt"></i> 55 1302 5346</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ciudad de México</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Esteban Te Orienta. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
-    <!-- FIN DEL PIE DE PAGINA -->
+
+    <a href="https://api.whatsapp.com/send/?phone=5513025346&text=%C2%A1Hola+Esteban%21+Me+gustar%C3%ADa+cotizar.&type=phone_number&app_absent=0" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Menú hamburguesa
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling para todos los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Efecto de cambio de color al hacer scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.backgroundColor = 'var(--primary)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
